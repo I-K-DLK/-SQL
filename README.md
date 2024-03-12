@@ -1,2 +1,2 @@
-# -SQL
+# SQL - task
 задание по SQL
