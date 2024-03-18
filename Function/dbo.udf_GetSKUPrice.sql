@@ -11,9 +11,11 @@ create or alter function dbo.udf_GetSKUPrice(
 returns decimal(18,2)
 begin
    declare @Price decimal(18,2)
-   select @Price = sum(Value)/sum(Quantity)
-   from SKU
-   where ID = @ID_SKU
-   group by ID
+   
+   select @Price = sum(s.Value)/sum(s.Quantity)
+   from dbo.SKU as s
+   where s.ID = @ID_SKU
+   group by s.ID
+   
    return @Price
 end
