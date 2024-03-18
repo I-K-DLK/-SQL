@@ -8,4 +8,4 @@ select
    ID
    ,Name
    ,dbo.udf_GetSKUPrice(ID) as Price 
-from SKU
+from SKU as s
