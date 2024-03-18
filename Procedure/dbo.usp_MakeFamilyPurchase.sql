@@ -10,10 +10,10 @@ create or alter procedure dbo.usp_MakeFamilyPurchase
 as
 if @FamilySurName in (select distinct SurName from dbo.Family)  
 begin  
-    update Family  
-    set BudgetValue = BudgetValue - (select sum(Value) as s from dbo.Basket as b inner join dbo.Family as f on f.ID = b.ID_Family where f.SurName = @FamilySurName)
-    from Family
-    where SurName = @FamilySurName  
+    update f  
+    set f.BudgetValue = f.BudgetValue - (select sum(Value) as s from dbo.Basket as b inner join dbo.Family as f on f.ID = b.ID_Family where f.SurName = @FamilySurName)
+    from dbo.Family as f
+    where f.SurName = @FamilySurName  
 end
 else
 begin
